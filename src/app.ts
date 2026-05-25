@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import router from "./router";
+import routerAdmin from "./routerAdmin";
 
 /** 1) ENTRENCE **/
 // ==== check the __dirname === later I will clean
@@ -19,6 +20,7 @@ app.set("engine view", "ejs");
 
 /** 4) ROUTERS **/
 
+app.use("/admin", routerAdmin);
 app.use("/", router);
 
 export default app; // module.exports = app;
