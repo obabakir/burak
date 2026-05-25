@@ -20,7 +20,7 @@ app.set("engine view", "ejs");
 
 /** 4) ROUTERS **/
 
-app.use("/admin", routerAdmin);
-app.use("/", router);
+app.use("/admin", routerAdmin); // EJS (BSSR uchun)
+app.use("/", router); // REACT (SPA uchun)
 
 export default app; // module.exports = app;
