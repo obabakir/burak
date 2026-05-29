@@ -1,23 +1,46 @@
-# ====== MITASK M =====
+# ==========     ========= #
+#          =  N  =         #
+# ==========     ========= #
 
-def getSquareNumber(arr):
+def palindromChack(text):
+    if not isinstance(text, str):
+        return "insert text"
 
-    if not isinstance(arr, list):
-        return "insert array"
+    letterP = text.lower(),
+    if letterP == letterP[:: -1]:
+        return True
 
-    result = []
-
-    for x in arr:
-        result.append({
-            "number": x,
-            "square": x ** 2
-        })
-
-    return result
+    else:
+        return False
 
 
-print(getSquareNumber([1, 2, 3, 4]))
-#      ====== MITASK L=====
+print(palindromChack("dad"))
+# ==========     ========= #
+#          =  M  =         #
+# ==========     ========= #
+
+# def getSquareNumber(arr):
+
+#     if not isinstance(arr, list):
+#         return "insert array"
+
+#     result = []
+
+#     for x in arr:
+#         result.append({
+#             "number": x,
+#             "square": x ** 2
+#         })
+
+#     return result
+
+
+# print(getSquareNumber([1, 2, 3, 4]))
+
+# ==========     ========= #
+#          =  L  =         #
+# ==========     ========= #
+
 # def reverseSentence(text):
 
 #     if not isinstance(text, str):
