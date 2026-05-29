@@ -1,5 +1,8 @@
 import { T } from "../libs/types/common";
 import { Request, Response } from "express";
+// ============ Future usage ========= //
+
+import MemberService from "../models/Member.service";
 
 // Adminka BSSR uchun
 const restaurantController: T = {};
