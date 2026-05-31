@@ -10,12 +10,13 @@ restaurantController.goHome = (req: Request, res: Response) => {
   try {
     console.log("standard-check entered=> goHome");
     res.send("Home Page");
+    // send | json | redirect | end | render
   } catch (err) {
     console.log("Error, goHome", err);
   }
 };
 
-restaurantController.goLogin = (req: Request, res: Response) => {
+restaurantController.getLogin = (req: Request, res: Response) => {
   try {
     console.log("standard-check entered=> goLogin");
     res.send("Login Page");
@@ -23,12 +24,31 @@ restaurantController.goLogin = (req: Request, res: Response) => {
     console.log("Error, goLogin", err);
   }
 };
-restaurantController.goSignup = (req: Request, res: Response) => {
+
+restaurantController.getSignup = (req: Request, res: Response) => {
   try {
     console.log("standard-check entered=> goSignup");
     res.send("Signup Page");
   } catch (err) {
     console.log("Error, goSignup", err);
+  }
+};
+
+restaurantController.processLogin = (req: Request, res: Response) => {
+  try {
+    console.log("standard-check entered=> processLogin");
+    res.send("DONE");
+  } catch (err) {
+    console.log("Error, processLogin", err);
+  }
+};
+
+restaurantController.processSingup = (req: Request, res: Response) => {
+  try {
+    console.log("standard-check entered=> processSingup");
+    res.send("DONE here");
+  } catch (err) {
+    console.log("Error, processSingup", err);
   }
 };
 

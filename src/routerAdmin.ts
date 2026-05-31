@@ -1,12 +1,26 @@
 import express from "express";
-const router = express.Router();
+const routerAdmin = express.Router();
 import restaurantController from "./controllers/restaurant_controller ";
 
-// ======  // =======
-router.get("/", restaurantController.goHome);
+// # ==========              ========= #
+// #             Restaurant             #
+// # ==========              ========= #
+routerAdmin.get("/", restaurantController.goHome);
 
-router.get("/login", restaurantController.goLogin);
+routerAdmin
+  .get("/login", restaurantController.getLogin)
+  .post("/login", restaurantController.processLogin);
 
-router.get("/signup", restaurantController.goSignup);
+routerAdmin
+  .get("/signup", restaurantController.getSignup)
+  .post("/signup", restaurantController.processSingup);
 
-export default router;
+// # ==========              ========= #
+// #               Product             #
+// # ==========              ========= #
+
+// # ==========              ========= #
+// #                User               #
+// # ==========              ========= #
+
+export default routerAdmin;
