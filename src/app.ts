@@ -2,6 +2,8 @@ import express from "express";
 import path from "path";
 import router from "./router";
 import routerAdmin from "./routerAdmin";
+import morgan from "morgan";
+import { MORGAN_CONFIG } from "./libs/config";
 
 /** 1) ENTRENCE **/
 // ==== check the __dirname === later I will clean
@@ -12,6 +14,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(morgan(MORGAN_CONFIG));
+// ==== \n --> yangi qator tashlash mantigi
 /** 2) SESSION **/
 
 /** 3) VIEW **/

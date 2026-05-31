@@ -1,4 +1,17 @@
 # ==========     ========= #
+#          Standards         #
+# ==========     ========= #
+#  Project standards:
+#  -Login standards: => morgan orqali login/ kirib kelgan get requestini turiva ahamiyatini bilib oladigan boldik
+# Naming Standards:
+#  function, method, variables ==> CAMEL
+#  class ==> PASCAL
+#  folder ==>  KEBAB
+# css ==> SNAKE
+#  -Error handling
+
+
+# ==========     ========= #
 #          =  N  =         #
 # ==========     ========= #
 
