@@ -1,3 +1,24 @@
+
+# ==========     ========= #
+#          =  O  =         #
+# ==========     ========= #
+
+def calculate_sum_of_numbers(arr):
+    if not isinstance(arr, list):
+        return "Please provide a list"
+
+    total = 0
+
+    for item in arr:
+        if isinstance(item, (int, float)) and not isinstance(item, bool):
+            total += item
+
+    return total
+
+
+print(calculate_sum_of_numbers([10, "10", {"son": 10}, True, 35]))  # 45
+
+
 # ==========     ========= #
 #          Standards         #
 # ==========     ========= #
@@ -19,19 +40,19 @@
 #          =  N  =         #
 # ==========     ========= #
 
-def palindromChack(text):
-    if not isinstance(text, str):
-        return "insert text"
+# def palindromChack(text):
+#     if not isinstance(text, str):
+#         return "insert text"
 
-    letterP = text.lower(),
-    if letterP == letterP[:: -1]:
-        return True
+#     letterP = text.lower(),
+#     if letterP == letterP[:: -1]:
+#         return True
 
-    else:
-        return False
+#     else:
+#         return False
 
 
-print(palindromChack("dad"))
+# print(palindromChack("dad"))
 # ==========     ========= #
 #          =  M  =         #
 # ==========     ========= #

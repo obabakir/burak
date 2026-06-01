@@ -48,7 +48,7 @@ restaurantController.processLogin = (req: Request, res: Response) => {
 restaurantController.processSingup = async (req: Request, res: Response) => {
   try {
     console.log("standard-check entered=> processSingup");
-    console.log("Body:", req.body);
+    // console.log("Body:", req.body);
 
     const newMember: MemberInput = req.body;
     newMember.memberType = MemberType.RESTAURANT;
