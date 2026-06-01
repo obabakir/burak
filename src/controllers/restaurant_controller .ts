@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 // ============ Future usage ========= //
 
 import MemberService from "../models/Member.service";
+import { MemberInput } from "../libs/types/member";
+import { MemberType } from "../libs/enums/member.enum";
 
 // Adminka BSSR uchun
 const restaurantController: T = {};
@@ -43,12 +45,21 @@ restaurantController.processLogin = (req: Request, res: Response) => {
   }
 };
 
-restaurantController.processSingup = (req: Request, res: Response) => {
+restaurantController.processSingup = async (req: Request, res: Response) => {
   try {
     console.log("standard-check entered=> processSingup");
-    res.send("DONE here");
+    console.log("Body:", req.body);
+
+    const newMember: MemberInput = req.body;
+    newMember.memberType = MemberType.RESTAURANT;
+
+    const memberService = new MemberService();
+    const result = await memberService.processSingup(newMember);
+
+    res.send(result);
   } catch (err) {
     console.log("Error, processSingup", err);
+    res.send(err);
   }
 };
 

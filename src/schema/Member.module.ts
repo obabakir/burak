@@ -23,8 +23,6 @@ const memberSchema = new Schema(
 
     memberNick: {
       type: String,
-      index: { unique: true, sparse: true },
-      required: true,
     },
     memberPhone: {
       type: String,
@@ -35,9 +33,6 @@ const memberSchema = new Schema(
 
     memberPasword: {
       type: String,
-      select: false,
-      // aftomatic ozgalarni passwordni korsatib bermaslik un
-      required: true,
     },
 
     memberAddress: {
@@ -53,7 +48,7 @@ const memberSchema = new Schema(
     },
 
     memberPoints: {
-      type: String,
+      type: Number,
       default: 0,
     },
   },

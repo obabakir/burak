@@ -8,6 +8,10 @@
 #  class ==> PASCAL
 #  folder ==>  KEBAB
 # css ==> SNAKE
+
+# Traditional API
+# Rest API
+# GraphQrl API
 #  -Error handling
 
 
