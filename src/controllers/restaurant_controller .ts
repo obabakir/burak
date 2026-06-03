@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 // ============ Future usage ========= //
 
 import MemberService from "../models/Member.service";
-import { MemberInput } from "../libs/types/member";
+import { LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 
 // Adminka BSSR uchun
@@ -24,6 +24,7 @@ restaurantController.getLogin = (req: Request, res: Response) => {
     res.send("Login Page");
   } catch (err) {
     console.log("Error, goLogin", err);
+    res.send(err);
   }
 };
 
@@ -36,28 +37,39 @@ restaurantController.getSignup = (req: Request, res: Response) => {
   }
 };
 
-restaurantController.processLogin = (req: Request, res: Response) => {
+restaurantController.processLogin = async (req: Request, res: Response) => {
   try {
-    console.log("standard-check entered=> processLogin");
-    res.send("DONE");
+    console.log(" processLogin");
+    console.log("Body:", req.body);
+
+    const input: LoginInput = req.body;
+
+    const memberService = new MemberService();
+    const result = await memberService.processLogin(input);
+
+    res.send(result);
   } catch (err) {
     console.log("Error, processLogin", err);
+    res.send(err);
   }
 };
 
 restaurantController.processSingup = async (req: Request, res: Response) => {
   try {
+    console.log("1");
     console.log("standard-check entered=> processSingup");
-    // console.log("Body:", req.body);
+    console.log("Body:", req.body);
 
     const newMember: MemberInput = req.body;
     newMember.memberType = MemberType.RESTAURANT;
 
+    console.log("2");
     const memberService = new MemberService();
     const result = await memberService.processSingup(newMember);
 
     res.send(result);
   } catch (err) {
+    console.log("7");
     console.log("Error, processSingup", err);
     res.send(err);
   }

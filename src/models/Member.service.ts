@@ -1,5 +1,5 @@
 import MemberModule from "../schema/Member.module";
-import { Member, MemberInput } from "../libs/types/member";
+import { LoginInput, Member, MemberInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Error";
 import { MemberType } from "../libs/enums/member.enum";
 
@@ -11,19 +11,47 @@ class MemberService {
   }
 
   public async processSingup(input: MemberInput): Promise<Member> {
+    console.log("3");
     const exist = await this.memberModel
-      .findOne({ membertype: MemberType.RESTAURANT })
+      .findOne({ memberType: MemberType.RESTAURANT })
       .exec();
 
     // console.log("exist:", exist)
+    console.log("4");
     if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     try {
+      console.log("5");
+      console.log("INPUT:", input);
       const result = await this.memberModel.create(input);
-      result.memberPasword = "";
+      result.memberPassword = "";
       return result;
     } catch (err) {
+      console.log("6, Error, processSingup", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     }
+  }
+
+  // ======== ====== =====
+  public async processLogin(input: LoginInput): Promise<Member> {
+    const member = await this.memberModel
+      .findOne(
+        { memberNick: input.memberNick },
+        { memberNick: 1, memberPassword: 1 },
+        // majburiy password va nickni oldik va _id ni ham olgandin ochirdik(_id: 1,)
+      )
+      .exec();
+
+    // memberni unique ligini tekshiradi
+    if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+
+    const isMatch = member.memberPassword === input.memberPasword;
+    // console.log("isMatch:", isMatch);
+
+    // memberni unique ligini tekshiradi
+    if (!isMatch)
+      throw new Errors(HttpCode.UNAUTHORIZED, Message.Wrong_PASSWORD);
+
+    return await this.memberModel.findById(member._id).exec();
   }
 }
 
@@ -33,3 +61,4 @@ export default MemberService;
 // const result = await newResult.save();
 
 // biz barcha requestlar un async dan foydalanamiz shunga async, await, promise/void/string dan foydalanayapmizza
+// membertype ni T katta harf bn yozdim

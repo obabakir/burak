@@ -23,6 +23,8 @@ const memberSchema = new Schema(
 
     memberNick: {
       type: String,
+      index: { unique: true, sparse: true },
+      required: true,
     },
     memberPhone: {
       type: String,
@@ -31,8 +33,10 @@ const memberSchema = new Schema(
       // tel raqami majburiy bb usiz hech qanday amal bajara olmaydi
     },
 
-    memberPasword: {
+    memberPassword: {
       type: String,
+      select: false,
+      required: true,
     },
 
     memberAddress: {
@@ -59,3 +63,5 @@ const memberSchema = new Schema(
 
 export default mongoose.model("Member", memberSchema);
 // yuqoridagi Mongoose ni model methodi bizga ushbu klasimizni schemaga ozgartirib beradi va uning ichidagi memberSchema ni export qilayapmizza
+
+// password, nick da ozgartirish qildim
