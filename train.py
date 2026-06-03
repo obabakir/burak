@@ -1,22 +1,47 @@
 
 # ==========     ========= #
+#          =  p  =         #
+# ==========     ========= #
+
+def objectToArray(obj):
+    if not isinstance(obj, dict):
+        return "insert an object"
+
+    return list(obj.items())
+
+
+print(objectToArray({"a": 10, "b": 20}))
+
+# output
+# ('a', 10), ('b', 20)]
+# =====
+# obj.keys()    # dict_keys(['a', 'b'])
+# obj.values()  # dict_values([10, 20])
+# obj.items()   # dict_items([('a', 10), ('b', 20)])
+# keys() → only keys
+# values() → only values
+# items() → key and value together
+# items() gives us access to both the key and the value at the same time, making the conversion easy:
+
+
+# ==========     ========= #
 #          =  O  =         #
 # ==========     ========= #
 
-def calculate_sum_of_numbers(arr):
-    if not isinstance(arr, list):
-        return "Please provide a list"
+# def calculate_sum_of_numbers(arr):
+#     if not isinstance(arr, list):
+#         return "Please provide a list"
 
-    total = 0
+#     total = 0
 
-    for item in arr:
-        if isinstance(item, (int, float)) and not isinstance(item, bool):
-            total += item
+#     for item in arr:
+#         if isinstance(item, (int, float)) and not isinstance(item, bool):
+#             total += item
 
-    return total
+#     return total
 
 
-print(calculate_sum_of_numbers([10, "10", {"son": 10}, True, 35]))  # 45
+# print(calculate_sum_of_numbers([10, "10", {"son": 10}, True, 35]))  # 45
 
 
 # ==========     ========= #
