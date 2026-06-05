@@ -3,14 +3,14 @@
 #          =  p  =         #
 # ==========     ========= #
 
-def objectToArray(obj):
-    if not isinstance(obj, dict):
-        return "insert an object"
+# def objectToArray(obj):
+#     if not isinstance(obj, dict):
+#         return "insert an object"
 
-    return list(obj.items())
+#     return list(obj.items())
 
 
-print(objectToArray({"a": 10, "b": 20}))
+# print(objectToArray({"a": 10, "b": 20}))
 
 # output
 # ('a', 10), ('b', 20)]
@@ -59,6 +59,10 @@ print(objectToArray({"a": 10, "b": 20}))
 # Rest API
 # GraphQrl API
 #  -Error handling
+
+# ===== =====
+# Traditional FD   => BSSR (admin panel)        =>   EJS [Django, Laravel, Spring]
+# Modern FD        => SPA (users' application)  =>   React [Angular, Vue]
 
 
 # ==========     ========= #

@@ -5,6 +5,7 @@ import restaurantController from "./controllers/restaurant_controller ";
 // # ==========              ========= #
 // #             Restaurant             #
 // # ==========              ========= #
+
 routerAdmin.get("/", restaurantController.goHome);
 
 routerAdmin
@@ -13,7 +14,7 @@ routerAdmin
 
 routerAdmin
   .get("/signup", restaurantController.getSignup)
-  .post("/signup", restaurantController.processSingup);
+  .post("/signup", restaurantController.processSignup);
 
 // # ==========              ========= #
 // #               Product             #
