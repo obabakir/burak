@@ -20,7 +20,7 @@ app.use(morgan(MORGAN_CONFIG));
 
 /** 3) VIEW **/
 app.set("views", path.join(__dirname, "views"));
-app.set("engine view", "ejs");
+app.set("view engine", "ejs");
 
 /** 4) ROUTERS **/
 
