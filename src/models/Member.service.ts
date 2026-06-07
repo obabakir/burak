@@ -60,13 +60,13 @@ class MemberService {
   // -----------------------------------
   // SSR uchun
   public async processSignup(input: MemberInput): Promise<Member> {
-    const exist = await this.memberModel
-      .findOne({ memberType: MemberType.RESTAURANT })
-      .exec();
+    // const exist = await this.memberModel
+    //   .findOne({ memberType: MemberType.RESTAURANT })
+    //   .exec();
 
-    // console.log("exist:", exist)
+    // // console.log("exist:", exist)
 
-    if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
+    // if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
 
     console.log("before:", input.memberPassword);
     const salt = await bcrypt.genSalt();
@@ -83,7 +83,6 @@ class MemberService {
     }
   }
 
-  // ======== ====== =====
   public async processLogin(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
