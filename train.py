@@ -1,3 +1,16 @@
+# ==========     ========= #
+#          =  Q  =         #
+# ==========     ========= #
+
+
+def hasProperty(obj, key):
+    for k in obj:
+        if k == key:
+            return True
+    return False
+
+
+print(hasProperty({"name": "BMW"}, "name"))
 
 # ==========     ========= #
 #          =  p  =         #
