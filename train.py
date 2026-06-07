@@ -77,6 +77,10 @@ print(hasProperty({"name": "BMW"}, "name"))
 # Traditional FD   => BSSR (admin panel)        =>   EJS [Django, Laravel, Spring]
 # Modern FD        => SPA (users' application)  =>   React [Angular, Vue]
 
+#  ===   SESSION OUTPUT   ===  #
+# 1) REQUEST JOIN
+# 2) SELF DESTROY
+#  ===   SESSION OUTPUT   ===  #
 
 # ==========     ========= #
 #          =  N  =         #
