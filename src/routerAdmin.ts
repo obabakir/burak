@@ -1,6 +1,7 @@
 import express from "express";
 const routerAdmin = express.Router();
 import restaurantController from "./controllers/restaurant_controller ";
+import productController from "./controllers/product_controller";
 
 // # ==========              ========= #
 // #             Restaurant             #
@@ -22,6 +23,9 @@ routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 // #               Product             #
 // # ==========              ========= #
 
+routerAdmin.get("/product/all", productController.getAllProducts);
+routerAdmin.post("/product/create", productController.createNewProduct);
+routerAdmin.post("/product/:id", productController.updateChoosenProduct);
 // # ==========              ========= #
 // #                User               #
 // # ==========              ========= #
