@@ -1,16 +1,30 @@
 # ==========     ========= #
+#          =  R  =         #
+# ==========     ========= #
+
+def calculate(text):
+    a, op, b = text.split()
+
+    if op == "+":
+        return int(a) + int(b)
+
+
+print(calculate("1 + 3"))  # 4
+
+
+# ==========     ========= #
 #          =  Q  =         #
 # ==========     ========= #
 
 
-def hasProperty(obj, key):
-    for k in obj:
-        if k == key:
-            return True
-    return False
+# def hasProperty(obj, key):
+#     for k in obj:
+#         if k == key:
+#             return True
+#     return False
 
 
-print(hasProperty({"name": "BMW"}, "name"))
+# print(hasProperty({"name": "BMW"}, "name"))
 
 # ==========     ========= #
 #          =  p  =         #
