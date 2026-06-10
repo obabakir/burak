@@ -82,19 +82,26 @@ print(calculate("1 + 3"))  # 4
 #  folder ==>  KEBAB
 # css ==> SNAKE
 
+#  -Error handling
+
+#  ===   REQUEST   ===  #
 # Traditional API
 # Rest API
 # GraphQrl API
-#  -Error handling
 
-# ===== =====
+
+# ===  Frontend Development  ===
 # Traditional FD   => BSSR (admin panel)        =>   EJS [Django, Laravel, Spring]
 # Modern FD        => SPA (users' application)  =>   React [Angular, Vue]
 
-#  ===   SESSION OUTPUT   ===  #
+#  ===   Cookies   ===  #
 # 1) REQUEST JOIN
 # 2) SELF DESTROY
-#  ===   SESSION OUTPUT   ===  #
+
+#  ===   Validation   ===  #
+# Frontend validation
+# Backend validation
+# Database Validation
 
 # ==========     ========= #
 #          =  N  =         #
