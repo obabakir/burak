@@ -1,15 +1,32 @@
 # ==========     ========= #
+#          =  s  =         #
+# ==========     ========= #
+
+
+def missingNumber(arr):
+    if not isinstance(arr, list):
+        return "insert array"
+
+    for num in range(len(arr) + 1):
+        if num not in arr:
+            return num
+
+
+print(missingNumber([3, 0, 1]))
+
+
+# ==========     ========= #
 #          =  R  =         #
 # ==========     ========= #
 
-def calculate(text):
-    a, op, b = text.split()
+# def calculate(text):
+#     a, op, b = text.split()
 
-    if op == "+":
-        return int(a) + int(b)
+#     if op == "+":
+#         return int(a) + int(b)
 
 
-print(calculate("1 + 3"))  # 4
+# print(calculate("1 + 3"))  # 4
 
 
 # ==========     ========= #
