@@ -5,7 +5,7 @@ import { NextFunction, Request, Response } from "express";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import Errors, { Message } from "../libs/Error";
+import Errors, { HttpCode, Message } from "../libs/Error";
 
 // Adminka BSSR uchun
 const memberService = new MemberService();
@@ -48,21 +48,26 @@ restaurantController.processSignup = async (
   res: Response,
 ) => {
   try {
-    console.log("1");
     console.log("entered=> processSignup");
-    console.log("Body:", req.body);
+    const file = req.file;
+    // for test
+    // console.log("FILE:", file);
+    // for test
+    if (!file)
+      throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
+
+    // console.log("Body:", req.body);
 
     const newMember: MemberInput = req.body;
+    newMember.memberImages = file?.path;
     newMember.memberType = MemberType.RESTAURANT;
-
-    console.log("2");
 
     const result = await memberService.processSignup(newMember);
     //   TODO: SESSION : AUTHENTICATION
 
     req.session.member = result;
     req.session.save(function () {
-      res.send(result);
+      res.redirect("/admin/product/all");
     });
   } catch (err) {
     console.log("Error, processSignup", err);
@@ -88,7 +93,7 @@ restaurantController.processLogin = async (
     //   TODO: SESSION : AUTHENTICATION
     req.session.member = result;
     req.session.save(function () {
-      res.send(result);
+      res.redirect("/admin/product/all");
     });
   } catch (err) {
     console.log("Error, processLogin", err);
