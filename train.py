@@ -1,18 +1,35 @@
 # ==========     ========= #
+#          =  T =         #
+# ==========     ========= #
+# ASK T
+
+def mergeSortedArrays(a, b):
+    if not isinstance(a, list) or not isinstance(b, list):
+        return "insert arrays"
+
+    result = a + b
+    result.sort()
+    return result
+
+
+print(mergeSortedArrays([0, 3, 4], [4, 6]))
+
+
+# ==========     ========= #
 #          =  s  =         #
 # ==========     ========= #
 
 
-def missingNumber(arr):
-    if not isinstance(arr, list):
-        return "insert array"
+# def missingNumber(arr):
+#     if not isinstance(arr, list):
+#         return "insert array"
 
-    for num in range(len(arr) + 1):
-        if num not in arr:
-            return num
+#     for num in range(len(arr) + 1):
+#         if num not in arr:
+#             return num
 
 
-print(missingNumber([3, 0, 1]))
+# print(missingNumber([3, 0, 1]))
 
 
 # ==========     ========= #
