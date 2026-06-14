@@ -13,7 +13,7 @@ export enum Message {
   SOMETHING_WENT_WRONG = "Something went wrong",
   NO_DATA_FOUND = " No data is found",
   CREATE_FAILED = "Create is failed",
-  UPDATE_FIELD = " Update is failed",
+  UPDATE_FAILED = " Update is failed",
 
   USED_NICK_PHONE = "You are inserting already used member nick or phone, please try another one!",
   NO_MEMBER_NICK = " No member with that member nick!",

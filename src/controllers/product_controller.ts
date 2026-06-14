@@ -58,6 +58,12 @@ productController.updateChoosenProduct = async (
 ) => {
   try {
     console.log("updateChoosenProduct");
+    // const id = req.params.id; ==>> error korsatdi typescript, shunga id type ni qoydim
+    const id = String(req.params.id);
+    const result = await productService.updateChoosenProduct(id, req.body);
+
+    // res --> string => json format
+    res.status(HttpCode.OK).json({ date: result });
   } catch (err) {
     console.log("Error, updateChoosenProduct", err);
     if (err instanceof Errors) res.status(err.code).json(err);
