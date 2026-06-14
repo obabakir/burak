@@ -16,6 +16,15 @@ class ProductService {
   // SPA
 
   // SSR
+  public async getAllProducts(): Promise<Product[]> {
+    // biz qaytuvchi malumotni array korinishiga ==>> Promise<Product[]>
+    // databazada malumot kop
+    const result = await this.productModel.find().exec();
+
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result;
+  }
+
   public async createNewProduct(input: ProductInput): Promise<Product> {
     try {
       return await this.productModel.create(input);
@@ -32,11 +41,13 @@ class ProductService {
     id = shapeIntoMongoosObjectId(id);
     const result = await this.productModel
       .findOneAndUpdate({ _id: id }, input, { new: true })
+      // 3 ta argument: ozgariluvchi, ozgargan qiymat, va natija(agar natija berilmasa databazada malumot ozgaradi lekin bizning brawzerimizda korinmaydi ekan)
       .exec();
 
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.CREATE_FAILED);
 
-    console.log("result:", result);
+    // console.log("result:", result);
+    // for test
     return result;
     // string => Object.Id
   }
