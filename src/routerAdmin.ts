@@ -45,10 +45,16 @@ routerAdmin.post(
   "/product/:id",
   // "/product/:id/:id2",
   restaurantController.verifyRestaurant,
-  productController.updateChoosenProduct,
+  productController.updateChosenProduct,
 );
 // # ==========              ========= #
 // #                User               #
 // # ==========              ========= #
+
+routerAdmin.get(
+  "/user/all",
+  restaurantController.verifyRestaurant,
+  restaurantController.getUsers,
+);
 
 export default routerAdmin;

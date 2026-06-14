@@ -14,6 +14,7 @@ memberController.signup = async (req: Request, res: Response) => {
 
     const input: MemberInput = req.body,
       result: Member = await memberService.signup(input);
+    console.log("result", result);
     //   ToDo: TOKENS : AUTHENTICATION
 
     res.json({ member: result });

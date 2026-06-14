@@ -34,7 +34,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 
 restaurantController.getLogin = (req: Request, res: Response) => {
   try {
-    console.log("standard-check entered=> goLogin");
+    console.log("entered=> goLogin");
     res.render("login");
   } catch (err) {
     console.log("Error, goLogin", err);
@@ -115,6 +115,29 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
   } catch (err) {
     console.log("Error, logout", err);
     res.send(err);
+  }
+};
+
+restaurantController.getUsers = async (req: AdminRequest, res: Response) => {
+  try {
+    console.log("getUsers");
+    const result = await memberService.getUsers();
+    console.log("result:", result);
+    res.render("users", { users: result });
+  } catch (err) {
+    console.log("Error, getUsers", err);
+    res.redirect("/admin/login");
+  }
+};
+
+restaurantController.updateChosenUser = async (
+  req: AdminRequest,
+  res: Response,
+) => {
+  try {
+    console.log("updateChosenUser");
+  } catch (err) {
+    console.log("Error, logout", err);
   }
 };
 

@@ -54,20 +54,17 @@ productController.createNewProduct = async (
   }
 };
 
-productController.updateChoosenProduct = async (
-  req: Request,
-  res: Response,
-) => {
+productController.updateChosenProduct = async (req: Request, res: Response) => {
   try {
-    console.log("updateChoosenProduct");
+    console.log("updateChosenProduct");
     // const id = req.params.id; ==>> error korsatdi typescript, shunga id type ni qoydim
     const id = String(req.params.id);
-    const result = await productService.updateChoosenProduct(id, req.body);
+    const result = await productService.updateChosenProduct(id, req.body);
 
     // res --> string => json format
     res.status(HttpCode.OK).json({ date: result });
   } catch (err) {
-    console.log("Error, updateChoosenProduct", err);
+    console.log("Error, updateChosenProduct", err);
     if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }

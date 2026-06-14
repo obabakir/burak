@@ -34,7 +34,7 @@ class ProductService {
     }
   }
 
-  public async updateChoosenProduct(
+  public async updateChosenProduct(
     id: string,
     input: ProductUpdateInput,
   ): Promise<Product> {
