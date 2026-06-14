@@ -137,6 +137,13 @@ print(mergeSortedArrays([0, 3, 4], [4, 6]))
 # Backend validation
 # Database Validation
 
+#  ===   JavaScript Animation packages   ===  #
+# googledan yuklaymiz:
+# 1) animajs
+# 2) pixijs
+# 3) spritejs
+# 4) threejs
+
 # ==========     ========= #
 #          =  N  =         #
 # ==========     ========= #
