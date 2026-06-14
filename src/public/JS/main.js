@@ -1,1 +1,1 @@
-console.log("FRONTEND AVASCRIPT START");
+console.log("Basic frontend javascript file");
