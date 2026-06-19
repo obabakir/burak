@@ -49,6 +49,7 @@ restaurantController.processSignup = async (
 ) => {
   try {
     console.log("entered=> processSignup");
+    console.log(req.body);
     const file = req.file;
     // for test
     // console.log("FILE:", file);
@@ -59,6 +60,7 @@ restaurantController.processSignup = async (
     // console.log("Body:", req.body);
 
     const newMember: MemberInput = req.body;
+    // manually adding file's path like its locational code into req body before sending it to the database
     newMember.memberImages = file?.path;
     newMember.memberType = MemberType.RESTAURANT;
 
