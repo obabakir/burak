@@ -12,15 +12,17 @@ $(function () {
     }
   });
 
-  //   $("#process-btn").on("click", () => {
-  //     $(".dish-container").slideToggle(500);
-  //     $("#process-btn").css("display", "none");
-  //   });
+  $("#process-btn").on("click", () => {
+    $(".dish-container").slideToggle(500);
+    // kantinerimiz displayi none edi "new product" tugmasini bossak ni  qaramaqarshisiga ozgartiradi
+    $("#process-btn").css("display", "none");
+    // "new product" tugmasini bor ekranda shuni ozini ochiradi va qachon cencelni bosilganda pastdagi mantiqda shunda yana show qilayapmiz
+  });
 
-  //   $("#cancel-btn").on("click", () => {
-  //     $(".dish-container").slideToggle(100);
-  //     $("#process-btn").css("display", "flex");
-  //   });
+  $("#cancel-btn").on("click", () => {
+    $(".dish-container").slideToggle(100);
+    $("#process-btn").css("display", "flex");
+  });
 });
 
 function validateForm() {
