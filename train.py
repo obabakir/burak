@@ -1,18 +1,37 @@
 # ==========     ========= #
-#          =  T =         #
+#          =  V =         #
 # ==========     ========= #
-# ASK T
 
-def mergeSortedArrays(a, b):
-    if not isinstance(a, list) or not isinstance(b, list):
-        return "insert arrays"
 
-    result = a + b
-    result.sort()
+def count_chars(text):
+    result = {}
+
+    for char in text:
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
+
     return result
 
 
-print(mergeSortedArrays([0, 3, 4], [4, 6]))
+print(count_chars("hello"))
+
+
+# ==========     ========= #
+#          =  T =         #
+# ==========     ========= #
+
+# def mergeSortedArrays(a, b):
+#     if not isinstance(a, list) or not isinstance(b, list):
+#         return "insert arrays"
+
+#     result = a + b
+#     result.sort()
+#     return result
+
+
+# print(mergeSortedArrays([0, 3, 4], [4, 6]))
 
 
 # ==========     ========= #
