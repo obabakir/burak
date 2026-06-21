@@ -120,7 +120,9 @@ class MemberService {
 
   public async getUsers(): Promise<Member[]> {
     const result = await this.memberModel
-      .find({ memberType: MemberType.RESTAURANT })
+      .find({ memberType: MemberType.USER })
+      // .find({ memberType: MemberType.RESTAURANT }) edi lekin USER ga ozgartirdim chunki methodimis userlarni check qilyapti va sonini qabul qilib olyapti ekan
+
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
