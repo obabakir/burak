@@ -6,7 +6,7 @@ import {
   MemberUpdateInput,
 } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Error";
-import { MemberType } from "../libs/enums/member.enum";
+import { MemberStaus, MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 import { shapeIntoMongoosObjectId } from "../libs/config";
 
@@ -37,14 +37,21 @@ class MemberService {
     const member = await this.memberModel
       .findOne(
         // To do Concider member status in the future
-        { memberNick: input.memberNick },
-        { memberNick: 1, memberPassword: 1 },
-        // majburiy password va nickni oldik va _id ni ham olgandin ochirdik(_id: 1,)
+        {
+          memberNick: input.memberNick,
+          memberStatus: { $ne: MemberStaus.DELETE },
+        } /* filter*/,
+        { memberNick: 1, memberPassword: 1, memberStatus: 1 },
+        /* projection*/
+        // majburiy password va nickni oldik va _id ni ham olgandik ochirdik(_id: 1,)
       )
       .exec();
 
     // memberni unique ligini tekshiradi
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+    else if (member.memberStatus === MemberStaus.BLOCK) {
+      throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
+    }
     // ==== <===> ====
     // const isMatch = member.memberPassword === input.memberPassword;
     const isMatch = await bcrypt.compare(
@@ -65,14 +72,16 @@ class MemberService {
 
   // -----------------------------------
   // SSR uchun
+  // TODO:commitda edi, dollarniki bn tekshir
   public async processSignup(input: MemberInput): Promise<Member> {
-    // const exist = await this.memberModel
-    //   .findOne({ memberType: MemberType.RESTAURANT })
-    //   .exec();
+    const exist = await this.memberModel
+      .findOne({ memberType: MemberType.RESTAURANT })
+      .exec();
 
-    // // console.log("exist:", exist)
+    // console.log("exist:", exist)
 
-    // if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
+    if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
+    // TODO:commitda edi, dollarniki bn tekshir
 
     console.log("before:", input.memberPassword);
     const salt = await bcrypt.genSalt();
