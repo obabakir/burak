@@ -23,6 +23,31 @@ $(function () {
     $(".dish-container").slideToggle(100);
     $("#process-btn").css("display", "flex");
   });
+  //   statusni ozgartishish mantigi
+  $(".new-product-status").on("change", async function (e) {
+    const id = e.target.id;
+    const productStatus = $(`#${id}.new-product-status`).val();
+    console.log("id:", id);
+    console.log("productStatus:", productStatus);
+
+    try {
+      const response = await axios.post(`/admin/product/${id}`, {
+        productStatus: productStatus,
+      });
+      // bu yerda axios bizning backendga malmotni yuborin kutib kelgan malumotni  =>
+      //  res.status(HttpCode.OK).json({ data: result }); yani response olayapmiz controllerdan va uning data nomi ostida malumotni(result degan ekanmiz) olayapmiz
+      //   date =>> data ga alishtirding hato qilganingni esla
+      console.log("response:", response);
+      const result = response.data;
+      if (result.data) {
+        console.log("Product updated");
+        $(".new-product-status").blur();
+      } else alert("Product update failed =>>!");
+    } catch (err) {
+      console.log(err);
+      alert("Product update failed!");
+    }
+  });
 });
 
 function validateForm() {
