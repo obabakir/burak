@@ -1,21 +1,64 @@
 # ==========     ========= #
+#          =  X =         #
+# ==========     ========= #
+# Object tarkibida (nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
+def countOccurrences(obj, key):
+    count = 0
+
+    for current_key, value in obj.items():
+        if current_key == key:
+            count += 1
+
+        if isinstance(value, dict):
+            count += countOccurrences(value, key)
+
+    return count
+
+
+print(countOccurrences({
+    "model": "A",
+    "s": {
+        "model": "B"
+    }
+}, "model"))
+
+# ==========     ========= #
+#          =  W =         #
+# ==========     ========= #
+# def chunkArray(arr, b):
+#     if not isinstance(arr, list):
+#         return "Error: input must be a list"
+
+#     if not isinstance(b, int) or b <= 0:
+#         return "Error: chunk size must be a positive integer"
+
+#     result = []
+
+#     for i in range(0, len(arr), b):
+#         result.append(arr[i:i + b])
+
+#     return result
+
+
+# print(chunkArray([1, 2, 3, 4, 5], 2))
+
+# ==========     ========= #
 #          =  V =         #
 # ==========     ========= #
 
+# def count_chars(text):
+#     result = {}
 
-def count_chars(text):
-    result = {}
+#     for char in text:
+#         if char in result:
+#             result[char] += 1
+#         else:
+#             result[char] = 1
 
-    for char in text:
-        if char in result:
-            result[char] += 1
-        else:
-            result[char] = 1
-
-    return result
+#     return result
 
 
-print(count_chars("hello"))
+# print(count_chars("hello"))
 
 
 # ==========     ========= #
