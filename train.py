@@ -1,26 +1,47 @@
 # ==========     ========= #
+#          =  z =         #
+# ==========     ========= #
+def sumEvens(arr):
+    if not isinstance(arr, list):
+        return "Error: input must be a list"
+
+    result = 0
+
+    for num in arr:
+        if num % 2 == 0:
+            result += num
+
+    return result
+
+
+print(sumEvens([1, 2, 3]))      # 2
+# print(sumEvens([1, 2, 3, 4]))   # 6
+# print(sumEvens([2, 4, 6]))      # 12
+# print(sumEvens([1, 3, 5]))      # 0
+# output = 2
+# ==========     ========= #
 #          =  X =         #
 # ==========     ========= #
 # Object tarkibida (nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
-def countOccurrences(obj, key):
-    count = 0
+# def countOccurrences(obj, key):
+#     count = 0
 
-    for current_key, value in obj.items():
-        if current_key == key:
-            count += 1
+#     for current_key, value in obj.items():
+#         if current_key == key:
+#             count += 1
 
-        if isinstance(value, dict):
-            count += countOccurrences(value, key)
+#         if isinstance(value, dict):
+#             count += countOccurrences(value, key)
 
-    return count
+#     return count
 
 
-print(countOccurrences({
-    "model": "A",
-    "s": {
-        "model": "B"
-    }
-}, "model"))
+# print(countOccurrences({
+#     "model": "A",
+#     "s": {
+#         "model": "B"
+#     }
+# }, "model"))
 
 # ==========     ========= #
 #          =  W =         #
@@ -41,6 +62,7 @@ print(countOccurrences({
 
 
 # print(chunkArray([1, 2, 3, 4, 5], 2))
+# output [[1, 2], [3, 4], [5]]
 
 # ==========     ========= #
 #          =  V =         #
@@ -59,6 +81,7 @@ print(countOccurrences({
 
 
 # print(count_chars("hello"))
+# {'h': 1, 'e': 1, 'l': 2, 'o': 1}
 
 
 # ==========     ========= #
