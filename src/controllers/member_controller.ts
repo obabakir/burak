@@ -4,9 +4,11 @@ import { Request, Response } from "express";
 import MemberService from "../models/Member.service";
 import { Member, LoginInput, MemberInput } from "../libs/types/member";
 import Errors from "../libs/Error";
+import AuthService from "../models/Auth.service";
 
 // React un/ qaytamizza
 const memberService = new MemberService();
+const authService = new AuthService();
 const memberController: T = {};
 memberController.signup = async (req: Request, res: Response) => {
   try {
@@ -14,8 +16,10 @@ memberController.signup = async (req: Request, res: Response) => {
 
     const input: MemberInput = req.body,
       result: Member = await memberService.signup(input);
-    console.log("result", result);
+
     //   ToDo: TOKENS : AUTHENTICATION
+    const token = await authService.createToken(result);
+    console.log("token=>:", token);
 
     res.json({ member: result });
   } catch (err) {
@@ -32,7 +36,9 @@ memberController.login = async (req: Request, res: Response) => {
 
     const input: LoginInput = req.body,
       result = await memberService.login(input);
-    //   ToDo: TOKENS : AUTHENTICATION
+    // token un
+    const token = await authService.createToken(result);
+    console.log("token=>:", token);
 
     res.json({ member: result });
   } catch (err) {
