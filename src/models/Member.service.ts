@@ -89,6 +89,24 @@ class MemberService {
     if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
     return result;
   }
+
+  public async getTopUsers(): Promise<Member[]> {
+    const result = await this.memberModel
+      .find({
+        memberStatus: MemberStaus.ACTIVE,
+        memberPoints: { $gte: 1 },
+        // we are calling the members who havegreater than or equal to 1 member points
+      })
+      .sort({
+        memberPoints: -1, // sort by memberPoints in descending order
+      }) /** "asc" = +1 yoki "desc" = -1 /// osishga nisbatan tan tanlaydi yoki kamayishga nisbatan tanlaydi**/
+      .limit(4)
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result;
+  }
+
   // -----------------------------------
   // SSR uchun
   // TODO:commitda edi, dollarniki bn tekshir
