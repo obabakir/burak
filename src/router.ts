@@ -31,6 +31,12 @@ router.get("/member/top-users", memberController.getTopUsers);
 /** Member **/
 /** Product **/
 router.get("/product/all", productController.getProducts);
+
+router.get(
+  "/product/:id",
+  memberController.retrieveAuth,
+  productController.getProduct,
+);
 /** Product **/
 /** Ordert **/
 export default router;
