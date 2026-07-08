@@ -52,7 +52,7 @@ class MemberService {
           memberStatus: { $ne: MemberStaus.DELETE },
         } /* filter*/,
         { memberNick: 1, memberPassword: 1, memberStatus: 1 },
-        /* projection*/
+        /* projection --- biz schemada select false qilganmiz va bu jarayonda majburlab olyapmizda va pastda compare qilish un foydalana olyapmiz*/
         // majburiy password va nickni oldik va _id ni ham olgandik ochirdik(_id: 1,)
       )
       .exec();
