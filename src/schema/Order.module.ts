@@ -11,9 +11,15 @@ const orderSchema = new Schema(
       type: Number,
       required: true,
     },
+    //     orderStatus: {
+    //   type: String,
+    //   enum: Object.values(OrderStatus),
+    //   default: OrderStatus.PAUSE,
+    // },
+    // hato berdi shunga
     orderStatus: {
-      type: Number,
-      enum: OrderStatus,
+      type: String,
+      enum: Object.values(OrderStatus),
       default: OrderStatus.PAUSE,
     },
     memberId: {
