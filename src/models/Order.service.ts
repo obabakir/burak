@@ -35,6 +35,9 @@ class OrderService {
     const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
       return accumulator + item.itemPrice * item.itemQuantity;
     }, 0);
+    // 0 + (20*2) = 40
+
+    // The last zero is the starting value. bola bratanni gapini esla array[], item{}
     const delivery = amount < 100 ? 5 : 0;
     // console.log("delivery and amount:", amount, delivery);
 
@@ -60,12 +63,16 @@ class OrderService {
   ): Promise<void> {
     const promisedList = input.map(async (item: OrderItemInput) => {
       item.orderId = orderId;
+      // You simply added a new property to that object.
       item.productId = shapeIntoMongoosObjectId(item.productId);
       await this.orderItemModel.create(item);
       return "INSERTED";
     });
 
-    console.log("promisedList => :", promisedList);
+    console.log(
+      "promisedList => :",
+      promisedList,
+    ); /*[ Promise {<pendind> }, Promise { <pendind> }] bu jarayonda malumotlar tayyorlanadi lekin d-base ga yozilmaydi : 3 sec, 2 sec, 1 sec mallumot katta kichikligina misol aytganmiz esla. Bu Promise.all(); ni talab qiladi*/
 
     const orderItemsState = await Promise.all(promisedList);
     console.log("orderItemsState => :", orderItemsState);

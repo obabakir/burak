@@ -7,6 +7,7 @@ import { OrderInquiry, OrderUpdateInput } from "../libs/types/order";
 import { OrderStatus } from "../libs/enums/order.enum";
 
 const orderService = new OrderService();
+
 const orderController: T = {};
 orderController.createOrder = async (req: ExtendedRequest, res: Response) => {
   try {

@@ -21,6 +21,7 @@ const orderSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true,
       ref: "Member",
+      // database dagi Member collectiongan boglayapmiz
     },
   },
   { timestamps: true, collection: "orders" },
