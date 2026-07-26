@@ -6,7 +6,7 @@ import {
   MemberUpdateInput,
 } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Error";
-import { MemberStaus, MemberType } from "../libs/enums/member.enum";
+import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 import { shapeIntoMongoosObjectId } from "../libs/config";
 
@@ -49,7 +49,7 @@ class MemberService {
         // To do Concider member status in the future
         {
           memberNick: input.memberNick,
-          memberStatus: { $ne: MemberStaus.DELETE },
+          memberStatus: { $ne: MemberStatus.DELETE },
         } /* filter*/,
         { memberNick: 1, memberPassword: 1, memberStatus: 1 },
         /* projection --- biz schemada select false qilganmiz va bu jarayonda majburlab olyapmizda va pastda compare qilish un foydalana olyapmiz*/
@@ -59,7 +59,7 @@ class MemberService {
 
     // memberni unique ligini tekshiradi
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
-    else if (member.memberStatus === MemberStaus.BLOCK) {
+    else if (member.memberStatus === MemberStatus.BLOCK) {
       throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
     }
     // ==== <===> ====
@@ -82,7 +82,7 @@ class MemberService {
   public async getMemberDetail(member: Member): Promise<Member> {
     const memberId = shapeIntoMongoosObjectId(member._id);
     const result = await this.memberModel
-      .findOne({ _id: memberId, memberStatus: MemberStaus.ACTIVE })
+      .findOne({ _id: memberId, memberStatus: MemberStatus.ACTIVE })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
     return result;
@@ -103,7 +103,7 @@ class MemberService {
   public async getTopUsers(): Promise<Member[]> {
     const result = await this.memberModel
       .find({
-        memberStatus: MemberStaus.ACTIVE,
+        memberStatus: MemberStatus.ACTIVE,
         memberPoints: { $gte: 1 },
         // we are calling the members who havegreater than or equal to 1 member points
       })
@@ -124,7 +124,7 @@ class MemberService {
         {
           _id: memberId,
           memberType: MemberType.USER,
-          memberStatus: MemberStaus.ACTIVE,
+          memberStatus: MemberStatus.ACTIVE,
         },
         { $inc: { memberPoints: point } },
         { new: true },

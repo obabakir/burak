@@ -3,7 +3,7 @@ export enum MemberType {
   RESTAURANT = "RESTAURANT",
 }
 
-export enum MemberStaus {
+export enum MemberStatus {
   ACTIVE = "ACTIVE",
   BLOCK = "BLOCK",
   DELETE = "DELETE",

@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { MemberStaus, MemberType } from "../libs/enums/member.enum";
+import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 //   ===== building options: ========
 // 1) Schema first ==> Biz shu usuldan foydalanamizza
 // 2) Code first
@@ -16,8 +16,8 @@ const memberSchema = new Schema(
 
     memberStatus: {
       type: String,
-      enum: MemberStaus,
-      default: MemberStaus.ACTIVE,
+      enum: MemberStatus,
+      default: MemberStatus.ACTIVE,
       // required: false, ==> bydefault yani talab etilmaydi, statusi bolmagan holda ham amallar bajara oladi
     },
 
